@@ -1,5 +1,5 @@
 const app = require('express')();
-const port = process.env.PORT = 3000;
+const port = process.env.PORT || 3000;
 
 app.get("/api/hello-world/:name?", (req, res, next) => {
     const name = req.params.name;
