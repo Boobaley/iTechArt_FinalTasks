@@ -5,8 +5,7 @@ router.get("/hello-world/:name?", (req, res, next) => {
     const name = req.params.name;
 
     if (!name) {
-        const error = new Error('Missing name');
-        next(error);
+        throw new Error('Missing name');
     }
     res.end(`<div>Hello ${name}!</div>`);
 });
