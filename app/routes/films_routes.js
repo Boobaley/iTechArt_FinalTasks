@@ -1,5 +1,6 @@
 const express = require('express');
 const router = express.Router();
+const postMiddleWare = require('./middleWares/films-routes-middleware');
 
 router.route('/films')
     .get((req, res, next) => {
@@ -8,13 +9,13 @@ router.route('/films')
         }
         res.send(films);
     })
-    .post((req, res, next) => {
+    .post(postMiddleWare,(req, res, next) => {
         const film = {
             id: req.body.id,
             title: req.body.title,
             description: req.body.description,
             avatar: req.body.avatar,
-            gallery: req.body.gallery,
+            gallery: [req.body.gallery],
             rating: req.body.rating,
             category: req.body.category
         }
