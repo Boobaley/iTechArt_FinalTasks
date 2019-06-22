@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
-const postMiddleWare = require('./middleWares/films-routes-middleware');
+const postValidationMW = require('./middleWares/films-routes-post-middleware');
+const putValidationMW = require('./middleWares/films-routes-put-middleware');
 
 router.route('/films')
     .get((req, res, next) => {
@@ -9,7 +10,7 @@ router.route('/films')
         }
         res.send(films);
     })
-    .post(postMiddleWare,(req, res, next) => {
+    .post(postValidationMW,(req, res, next) => {
         const film = {
             id: req.body.id,
             title: req.body.title,
@@ -23,14 +24,14 @@ router.route('/films')
         next();
     });
 
-router.route('/films/:id')
-    .put((req, res, next) => {
+router.route('/films/:id?')
+    .put(putValidationMW,(req, res, next) => {
         const film = {
             id: req.params.id,
             title: req.body.title,
             description: req.body.description,
             avatar: req.body.avatar,
-            gallery: req.body.gallery,
+            gallery: [req.body.gallery],
             rating: req.body.rating,
             category: req.body.category
         }

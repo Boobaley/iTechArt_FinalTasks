@@ -1,5 +1,7 @@
 const express = require('express');
 const router = express.Router();
+const postMW = require('./middleWares/films-categories-post-middleware');
+const putMW = require('./middleWares/films-categories-put-middleware');
 
 router.route('/films/categories')
     .get((req, res, next) => {
@@ -8,7 +10,7 @@ router.route('/films/categories')
         };
         res.send(categories);
     })
-    .post((req, res, next) => {
+    .post(postMW, (req, res, next) => {
         const categories = {
             id: req.body.id,
             title: req.body.title,
@@ -18,8 +20,8 @@ router.route('/films/categories')
         res.send(categories);
     });
 
-router.route('/films/categories/:id')
-    .put((req, res, next) => {
+router.route('/films/categories/:id?')
+    .put(putMW, (req, res, next) => {
         const categories = {
             id: req.params.id,
             title: req.body.title,
