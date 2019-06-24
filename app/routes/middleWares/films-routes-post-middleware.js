@@ -35,7 +35,7 @@ function filmsPostValidation(req, res, next) {
     }
 
     //RATING
-    if (parseInt(req.body.rating) && isNaN(parseInt(req.body.rating)) || req.body.rating < 0 || req.body.rating > 5) {
+    if (req.body.rating && isNaN(parseInt(req.body.rating)) || req.body.rating < 0 || req.body.rating > 5) {
         throw new Error('Incorrect value of rating' );
     }
     next();
