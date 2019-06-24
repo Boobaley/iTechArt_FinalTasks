@@ -5,6 +5,9 @@ const morgan = require('morgan');
 const filmsRouter = require('./app/routes/films_routes');
 const helloRouter = require('./app/routes/hello_world-routes');
 const filmsCategoriesRouter = require('./app/routes/film_categories_routes');
+const mongoose = require('mongoose');
+const uri = 'mongodb+srv://adrik:1998@itechartdatabase-wjk8u.mongodb.net/ApplicationDB?retryWrites=true&w=majority';
+mongoose.connect(uri);
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(morgan('dev'));
@@ -19,9 +22,8 @@ app.get("*", (req, res, next) => {
 });
 
 app.use((err, req, res, next) => {
-    const status = 404;
     console.log(err.message);
-    res.status(404).json({ error: err.message, status });
+    res.json({ error: err.message, status: res.statusCode});
 });
 
 app.listen(port, () => {
