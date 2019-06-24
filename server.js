@@ -1,15 +1,17 @@
 const app = require('express')();
 const port = process.env.PORT || 3000;
 const bodyParser = require('body-parser');
+const morgan = require('morgan');
 const filmsRouter = require('./app/routes/films_routes');
 const helloRouter = require('./app/routes/hello_world-routes');
 const filmsCategoriesRouter = require('./app/routes/film_categories_routes');
 
 app.use(bodyParser.urlencoded({ extended: true }));
+app.use(morgan('dev'));
 
 app.use('/api', filmsRouter, helloRouter, filmsCategoriesRouter);
 
-app.get("*", (req, res, next) => {
+app.get("*", (req, res, next) => { 
     if (res.status(404)) {
         const error = new Error('Incorrect url');
         next(error);
