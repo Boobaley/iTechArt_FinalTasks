@@ -6,12 +6,12 @@ const Film = require('../models/film');
 
 router.route('/films')
     .get(async(req, res, next) => {
-        const films = await Film.find();
+        const films = await Film.find().limit(10);
         res.send(films);
     })
     .post(postValidationMW, (req, res, next) => {
         const film = new Film();
-
+        film._id = req.body.id;
         film.title = req.body.title;
         film.description = req.body.description;
         film.avatar = req.body.avatar;

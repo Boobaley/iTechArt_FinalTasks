@@ -2,6 +2,7 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const filmsSchema = new Schema({
+    _id: Number,
     title: {
         type: String,
         minlength: 3,
