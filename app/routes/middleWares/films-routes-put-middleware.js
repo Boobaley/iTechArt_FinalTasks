@@ -22,20 +22,18 @@ function filmsPutValidation(req, res, next) {
     }
 
     //GALLERY
-    if (req.body.gallery) {
+    if (req.body.gallery && req.body.gallery.length >= 4) {
         for (let i = 0; i < req.body.gallery.length; i++) {
             if (!linkValidation.test(req.body.gallery[i])) {
                 throw new Error('Invalid gallery value');
-            }
-        }
-    }
-
-    if (!req.body.gallery || req.body.gallery.length < 4) {
+            };
+        };
+    } else {
         throw new Error('Invalid gallery value');
     }
 
     //RATING
-    if (parseInt(req.body.rating) && isNaN(parseInt(req.body.rating)) || req.body.rating < 0 || req.body.rating > 5) {
+    if (req.body.rating && isNaN(+req.body.rating) || req.body.rating < 0 || req.body.rating > 5) {
         throw new Error('Incorrect value of rating' );
     }
     next();
