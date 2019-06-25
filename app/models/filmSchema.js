@@ -1,8 +1,11 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
+const categorySchema = require('./filmsCategorySchema');
 
 const filmsSchema = new Schema({
-    _id: Number,
+    _id: {
+        type: Number
+    },
     title: {
         type: String,
         minlength: 3,
@@ -25,13 +28,21 @@ const filmsSchema = new Schema({
     },
     rating: {
         type: Number,
-        required: false
+        required: false,
+        min: 0,
+        max: 5
     },
     category: {
         type: Number,
         required: false
     }
 });
-const Film = mongoose.model('Films', filmsSchema);
+
+filmsSchema.post('save', (film, next) => {
+    categorySchema.findOne({ _id: film.category })
+    .updateOne({ $push: {films: film._id} })
+    .then(() => next());
+});
+const Film = mongoose.model('films', filmsSchema);
 
 module.exports = Film;

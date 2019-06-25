@@ -2,15 +2,16 @@ const express = require('express');
 const router = express.Router();
 const postValidationMW = require('./middleWares/films-routes-post-middleware');
 const putValidationMW = require('./middleWares/films-routes-put-middleware');
-const Film = require('../models/film');
+const Film = require('../models/filmSchema');
 
 router.route('/films')
     .get(async(req, res, next) => {
-        const films = await Film.find().limit(10);
+        const films = await Film.find().sort({_id: 1});
         res.send(films);
     })
     .post(postValidationMW, (req, res, next) => {
         const film = new Film();
+        
         film._id = req.body.id;
         film.title = req.body.title;
         film.description = req.body.description;
@@ -25,23 +26,24 @@ router.route('/films')
 
 router.route('/films/:id?')
     .put(putValidationMW,(req, res, next) => {
-        const film = {
-            id: req.params.id,
+        Film.updateOne({_id: req.params.id}, {
             title: req.body.title,
             description: req.body.description,
             avatar: req.body.avatar,
-            gallery: [req.body.gallery],
+            gallery: req.body.gallery,
             rating: req.body.rating,
             category: req.body.category
-        }
-        res.send(film);
+        }, (err, result) => {
+            if (err) return console.log(err);
+            res.send(result);
+        });
     })
     .delete((req, res) => {
-        const result = {
-            success: true,
-            id: req.params.id
-        }
-        res.send(result);
+        Film.remove({_id: req.params.id}, (err, result) => {
+            if (err) return console.log(err);
+            console.log(result);
+            res.send(result);
+        });
     });
 
 module.exports = router;

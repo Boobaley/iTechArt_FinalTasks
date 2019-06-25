@@ -1,4 +1,4 @@
-function filmsCategioriesPostMW(req, res, next) {
+function filmsCategoriesPostMW(req, res, next) {
     //ID
     if (!req.body.id) {
         res.status(500);
@@ -21,8 +21,10 @@ function filmsCategioriesPostMW(req, res, next) {
     if (!req.body.films) {
         res.status(500);
         throw new Error('Incorrect films field');
+    } else {
+        req.body.films = [];
     }
     next();
 }
 
-module.exports = filmsCategioriesPostMW;
+module.exports = filmsCategoriesPostMW;
