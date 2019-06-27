@@ -1,7 +1,8 @@
 import React from 'react';
 import HeaderContainer from '../containers/HeaderContainer';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
-import SimpleSlider from '../views/Slider/Slider';
+import Slider from '../views/Slider/Slider';
+import FilmItemContainer from '../containers/FilmCollectionContainer/FilmsCollectionContainer';
 
 const Routes = () => {
     return(
@@ -13,10 +14,8 @@ const Routes = () => {
                     render={() => 
                         <div>
                             <HeaderContainer current={0}/>
-                            <SimpleSlider/>
-                        </div>
-
-                        
+                            <Slider/>
+                        </div>   
                     }
                 />
                 <Route
@@ -24,7 +23,7 @@ const Routes = () => {
                     render={() =>
                         <div>
                             <HeaderContainer current={1}/>
-                            <div>Films Route</div>
+                            <FilmItemContainer/>
                         </div> 
                     }
                 />
