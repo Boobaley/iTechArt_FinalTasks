@@ -15,7 +15,7 @@ router.route('/films/categories')
         category._id = req.body.id;
         category.title = req.body.title;
         category.description = req.body.description;
-        category.films = req.body.films;
+        category.filmsId = req.body.filmsId;
         category.save().then(response => console.log(response)).catch(err => console.log(err));
         res.send(category);
         next();
@@ -26,7 +26,7 @@ router.route('/films/categories/:id?')
         Category.updateOne({_id: req.params.id}, {
             title: req.body.title,
             description: req.body.description,
-            films: req.body.films
+            filmsId: req.body.filmsId
         }, (err, result) => {
             if (err) return console.log(err);
             res.send(result);

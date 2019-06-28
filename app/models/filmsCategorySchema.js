@@ -3,7 +3,8 @@ const Schema = mongoose.Schema;
 
 const categorySchema = new Schema({
     _id: {
-        type: Number
+        type: Number,
+        required: true
     },
     title: {
         type: String,
@@ -16,8 +17,8 @@ const categorySchema = new Schema({
         maxlength: 500,
         required: true
     },
-    films: {
-        type: Array,
+    filmsId: {
+        type: [Number],
         required: true
     }
 });

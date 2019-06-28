@@ -18,21 +18,21 @@ router.route('/films')
         film.avatar = req.body.avatar;
         film.gallery = req.body.gallery;
         film.rating = req.body.rating;
-        film.category = req.body.category
+        film.categoryId = req.body.categoryId
         film.save().then(response => console.log(response)).catch(err => console.log(err));
         res.send(film);
         next();
     });
 
 router.route('/films/:id?')
-    .put(putValidationMW,(req, res, next) => {
-        Film.updateOne({_id: req.params.id}, {
+    .put(putValidationMW, (req, res, next) => {
+        Film.updateOne({ _id: req.params.id }, {
             title: req.body.title,
             description: req.body.description,
             avatar: req.body.avatar,
             gallery: req.body.gallery,
             rating: req.body.rating,
-            category: req.body.category
+            categoryId: req.body.categoryId
         }, (err, result) => {
             if (err) return console.log(err);
             res.send(result);

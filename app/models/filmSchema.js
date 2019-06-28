@@ -32,15 +32,15 @@ const filmsSchema = new Schema({
         min: 0,
         max: 5
     },
-    category: {
+    categoryId: {
         type: Number,
         required: false
     }
 });
 
 filmsSchema.post('save', (film, next) => {
-    categorySchema.findOne({ _id: film.category })
-    .updateOne({ $push: {films: film._id} })
+    categorySchema.findOne({ _id: film.categoryId })
+    .updateOne({ $push: {filmsId: film._id} })
     .then(() => next());
 });
 const Film = mongoose.model('films', filmsSchema);
