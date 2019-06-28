@@ -5,11 +5,15 @@ const putValidationMW = require('./middleWares/films-routes-put-middleware');
 const Film = require('../models/filmSchema');
 
 router.route('/films')
-    .get(async(req, res, next) => {
-        const films = await Film.find().sort({_id: 1});
-        res.send(films);
+    .get((req, res, next) => {
+        Film.find((err, films) => {
+            if (err) {
+                throw new Error(err);
+            };
+            res.send(films)
+        }).sort({ _id: 1 });
     })
-    .post(postValidationMW, (req, res, next) => {
+    .post(postValidationMW, (req, res, next) => {а
         const film = new Film();
         
         film._id = req.body.id;
@@ -19,8 +23,9 @@ router.route('/films')
         film.gallery = req.body.gallery;
         film.rating = req.body.rating;
         film.categoryId = req.body.categoryId
-        film.save().then(response => console.log(response)).catch(err => console.log(err));
-        res.send(film);
+        film.save()
+            .then(result => res.send(result))
+            .catch(err => console.log(err));
         next();
     });
 
@@ -39,9 +44,8 @@ router.route('/films/:id?')
         });
     })
     .delete((req, res) => {
-        Film.remove({_id: req.params.id}, (err, result) => {
+        Film.remove({ _id: req.params.id }, (err, result) => {
             if (err) return console.log(err);
-            console.log(result);
             res.send(result);
         });
     });
