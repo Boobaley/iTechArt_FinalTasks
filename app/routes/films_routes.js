@@ -11,9 +11,9 @@ router.route('/films')
                 throw new Error(err);
             };
             res.send(films)
-        }).sort({ _id: 1 });
+        });
     })
-    .post(postValidationMW, (req, res, next) => {а
+    .post(postValidationMW, (req, res, next) => {
         const film = new Film();
         
         film._id = req.body.id;
@@ -22,11 +22,15 @@ router.route('/films')
         film.avatar = req.body.avatar;
         film.gallery = req.body.gallery;
         film.rating = req.body.rating;
-        film.categoryId = req.body.categoryId
-        film.save()
-            .then(result => res.send(result))
-            .catch(err => console.log(err));
-        next();
+        film.categoryId = req.body.categoryId;
+
+        film.save((err, result) => {
+            if (err) {
+                throw new Error('something bad happened');
+            } else {
+                res.send(result);
+            };
+        });
     });
 
 router.route('/films/:id?')
@@ -38,14 +42,17 @@ router.route('/films/:id?')
             gallery: req.body.gallery,
             rating: req.body.rating,
             categoryId: req.body.categoryId
-        }, (err, result) => {
-            if (err) return console.log(err);
-            res.send(result);
+        })
+        .then(result => res.send(result))
+        .catch(err => {
+            throw new Error(err)
         });
     })
     .delete((req, res) => {
         Film.remove({ _id: req.params.id }, (err, result) => {
-            if (err) return console.log(err);
+            if (err) {
+                throw new Error(err);
+            }
             res.send(result);
         });
     });

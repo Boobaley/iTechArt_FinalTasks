@@ -20,7 +20,7 @@ function filmsCategoriesPostMW(req, res, next) {
     //FILMS
     if (!req.body.filmsId) {
         res.status(500);
-        throw new Error('Incorrect films field');
+        throw new Error('Incorrect films fieldId');
     } else {
         req.body.films = [];
     }
