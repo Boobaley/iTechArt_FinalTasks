@@ -3,6 +3,7 @@ import HeaderContainer from '../containers/HeaderContainer';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import Slider from '../views/Slider/Slider';
 import FilmItemContainer from '../containers/FilmCollectionContainer/FilmsCollectionContainer';
+import FilmCard from '../views/FilmCard/FilmCard';
 
 const Routes = () => {
     return(

@@ -3,6 +3,7 @@ import { makeStyles } from '@material-ui/core/styles';
 export const useStyles = makeStyles(theme => ({
     wrapper: {
         display: 'flex',
+        position: 'relative',
         flexDirection: 'column',
         alignItems: 'center',
         justifyContent: 'center',

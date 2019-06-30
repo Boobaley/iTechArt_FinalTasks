@@ -3,13 +3,19 @@ export const styles = {
         marginTop: '10vh'
     },
     title: {
-        margin: '0 auto',
-        fontSize: 70,
+        marginLeft: 50,
+        fontSize: 60,
         color: '#fff',
         fontWeight: 700,
-        textAlign: 'center'
     },
     styledWord: {
         color: 'tomato'
+    },
+    filmItemsWrapper: {
+        display: 'flex', 
+        flexWrap: 'wrap',
+        padding: 50, 
+        alignItems: 'center', 
+        width: '100%'
     }
 };
