@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import { getAllFilms } from '../../redux/actions/actionCreator';
 import { styles } from './styles';
 import FilterContainer from '../FilterContainer';
-import { withRouter } from 'react-router-dom';
+import{ withRouter } from 'react-router-dom';
 
 const mapStateToProps = state => {
     return {
@@ -52,4 +52,4 @@ class FilmCollectionContainer extends Component {
 }
 
 
-export default withRouter(connect (mapStateToProps, { getAllFilms })(FilmCollectionContainer));
+export default withRouter(connect(mapStateToProps, { getAllFilms })(FilmCollectionContainer));
