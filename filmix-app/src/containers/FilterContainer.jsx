@@ -5,6 +5,6 @@ export default class FilterContainer extends Component {
     render() {
         return (
             <Filter/>
-        )
-    }
+        );
+    };
 }

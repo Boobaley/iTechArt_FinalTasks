@@ -20,10 +20,10 @@ export default function MediaCard(props) {
         />
         <CardContent>
           <Typography gutterBottom variant="h5" component="h2">
-            Film Card
+            {props.filmName}
           </Typography>
           <Typography variant="body2" color="textSecondary" component="p">
-           Film Description
+           {props.description}
           </Typography>
         </CardContent>
       </CardActionArea>
@@ -31,7 +31,7 @@ export default function MediaCard(props) {
         <Button size="small" color="primary">
           Share
         </Button>
-        <Button size="small" color="primary">
+        <Button size="small" color="primary" onClick={() => props.redirect(props.id)}>
           Learn More
         </Button>
       </CardActions>

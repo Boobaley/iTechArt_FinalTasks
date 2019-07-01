@@ -1,0 +1,5 @@
+export const DATA_REQUESTED = 'DATA_REQUESTED';
+export const DATA_LOADED = 'DATA_LOADED';
+export const API_ERRORED = 'API_ERRORED';
+export const FILM_REQUESTED = 'FILM_REQUESTED';
+export const FILM_LOADED = 'FILM_LOADED';

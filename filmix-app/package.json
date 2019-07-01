@@ -13,6 +13,7 @@
     "react-scripts": "3.0.1",
     "react-slick": "^0.24.0",
     "redux": "^4.0.1",
+    "redux-saga": "^1.0.4",
     "slick-carousel": "^1.8.1"
   },
   "scripts": {

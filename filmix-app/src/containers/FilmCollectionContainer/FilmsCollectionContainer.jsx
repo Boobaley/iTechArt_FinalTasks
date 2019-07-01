@@ -1,50 +1,38 @@
-import React from 'react';
+import React, { Component } from 'react';
 import FilmItem from '../../views/FilmItem/FilmItem';
-import Image_1 from '../../images/download.jpg';
-import Image_2 from '../../images/download_1_.jpg';
-import Image_3 from '../../images/download_2_.jpg';
+import { connect } from 'react-redux';
+import { getAllFilms } from '../../redux/actions/actionCreator';
 import { styles } from './styles';
 import FilterContainer from '../FilterContainer';
+import { withRouter } from 'react-router-dom';
 
+const mapStateToProps = state => {
+    return {
+        films: state.films.films
+    }
+}
 
-class FilmCollectionContainer extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            films: [
-                {image: Image_1, title: 'Film_1'},
-                {image: Image_2, title: 'Film_2'},
-                {image: Image_3, title: 'Film_3'},
-                {image: Image_1, title: 'Film_1'},
-                {image: Image_2, title: 'Film_2'},
-                {image: Image_3, title: 'Film_3'},
-                {image: Image_1, title: 'Film_1'},
-                {image: Image_2, title: 'Film_2'},
-                {image: Image_3, title: 'Film_3'},
-                {image: Image_1, title: 'Film_1'},
-                {image: Image_2, title: 'Film_2'},
-                {image: Image_3, title: 'Film_3'},
-                {image: Image_1, title: 'Film_1'},
-                {image: Image_2, title: 'Film_2'},
-                {image: Image_3, title: 'Film_3'},
-                {image: Image_1, title: 'Film_1'},
-                {image: Image_2, title: 'Film_2'},
-                {image: Image_3, title: 'Film_3'},
-                {image: Image_1, title: 'Film_1'},
-                {image: Image_2, title: 'Film_2'},
-                {image: Image_3, title: 'Film_3'},
-                {image: Image_1, title: 'Film_1'},
-                {image: Image_2, title: 'Film_2'},
-                {image: Image_3, title: 'Film_3'},
-            ]
-        }
+class FilmCollectionContainer extends Component {
+
+    componentDidMount() {
+        this.props.getAllFilms();
     }
 
+    handleRedirect = (id) => {
+        this.props.history.push(`/films/${ id }`);
+    }
+    
     renderFilms = () => {
-        return this.state.films.map((item, id) => {
+        return this.props.films.map((item, id) => {
             return (
                 <div key={id}>
-                    <FilmItem filmImage={item.image} filmName={item.title}/>
+                    <FilmItem 
+                        id={item._id}
+                        filmName={item.title} 
+                        description={item.description} 
+                        avatar={item.avatar} 
+                        redirect={this.handleRedirect}
+                    />
                 </div>
             )
         });
@@ -64,4 +52,4 @@ class FilmCollectionContainer extends React.Component {
 }
 
 
-export default FilmCollectionContainer;
+export default withRouter(connect (mapStateToProps, { getAllFilms })(FilmCollectionContainer));

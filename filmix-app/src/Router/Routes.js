@@ -3,7 +3,7 @@ import HeaderContainer from '../containers/HeaderContainer';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import Slider from '../views/Slider/Slider';
 import FilmItemContainer from '../containers/FilmCollectionContainer/FilmsCollectionContainer';
-import FilmCard from '../views/FilmCard/FilmCard';
+import SingleFilmContainer from '../containers/SingleFilmContainer.jsx';
 
 const Routes = () => {
     return(
@@ -20,6 +20,7 @@ const Routes = () => {
                     }
                 />
                 <Route
+                    exact
                     path='/films'
                     render={() =>
                         <div>
@@ -28,12 +29,16 @@ const Routes = () => {
                         </div> 
                     }
                 />
+                <Route
+                    path='/films/:filmId'
+                    component={SingleFilmContainer}
+                    
+                />
                 <Route 
                     path='/categories'
                     render={() =>
                         <div>
                             <HeaderContainer current={2}/>
-                            <div>Categories Route</div>
                         </div>
                     }
                 />
