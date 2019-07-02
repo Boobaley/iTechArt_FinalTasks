@@ -1,4 +1,4 @@
-import { films, film } from './filmsReducer';  
+import { films } from './filmsReducer';  
 
 import { combineReducers } from 'redux';
 

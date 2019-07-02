@@ -32,7 +32,6 @@ const Routes = () => {
                 <Route
                     path='/films/:filmId'
                     component={SingleFilmContainer}
-                    
                 />
                 <Route 
                     path='/categories'

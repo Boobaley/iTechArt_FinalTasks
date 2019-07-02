@@ -7,6 +7,7 @@ import FilterContainer from '../FilterContainer';
 import { withRouter } from 'react-router-dom';
 
 const mapStateToProps = state => {
+    console.log(state.films)
     return {
         films: state.films.films
     }
@@ -19,7 +20,7 @@ class FilmCollectionContainer extends Component {
     }
 
     handleRedirect = (id) => {
-        this.props.history.push(`/films/${ id }`);
+        this.props.history.replace(`/films/${id}`);
     }
     
     renderFilms = () => {

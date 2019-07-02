@@ -9,11 +9,8 @@ const mapStateToProps = state => {
     }
 }
 class SingleFilmContainer extends Component {
-    constructor(props) {
-        super(props)
-    }
     componentDidMount() {
-        const filmId = this.props.match.params.filmId;
+        const { filmId } = this.props.match.params;
         this.props.getFilm(filmId);
     }
     render() {
@@ -22,5 +19,6 @@ class SingleFilmContainer extends Component {
         );
     }
 }
+
 
 export default connect(mapStateToProps, { getFilm })(SingleFilmContainer);
