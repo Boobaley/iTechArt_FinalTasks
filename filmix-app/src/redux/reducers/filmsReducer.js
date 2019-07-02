@@ -1,15 +1,20 @@
-import { DATA_LOADED } from '../constants/actionTypes';
+import { FILMS_LOADED, FILM_LOADED } from '../constants/actionTypes';
 const initialState = {
     films: [],
+    film: {},
+    loading: true
 };
 
 export const films = (state = initialState, { payload, type }) => {
     switch(type) {
-        case DATA_LOADED:
-            return {...state, films: payload };
+        case FILMS_LOADED:
+            return { ...state, films: payload };
+        case FILM_LOADED:
+            return { ...state, film: payload };
+        case 'SET_LOADING':
+            return { ...state, loading: payload }
         default: {
             return state;
         }
-    }
-    
+    }  
 }

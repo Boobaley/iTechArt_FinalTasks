@@ -31,12 +31,7 @@ const Routes = () => {
                 />
                 <Route
                     path='/films/:filmId'
-                    render={() => 
-                        <div>
-                            <HeaderContainer current={1}/>
-                            <SingleFilmContainer/>
-                        </div>
-                    }
+                    component={SingleFilmContainer}
                 />
                 <Route 
                     path='/categories'

@@ -2,10 +2,11 @@ import { makeStyles } from '@material-ui/core/styles';
 
 const useStyles = makeStyles({
     wrapper: {
-        height: '100vh',
         marginTop: '7vh',
         display: 'flex',
-        padding: 10
+        padding: 100,
+        paddingBottom: 0,
+        backgroundColor: '#7b1a2f'
     },
     imageWrapper: {
         display: 'flex',
@@ -15,29 +16,39 @@ const useStyles = makeStyles({
         width: 400
     },
     image: {
-        width: '100%',
+        width: 400,
         height: 550,
-        border: '1px solid red'
+        backgroundSize: 'cover',
+        backgroundRepeat: 'no-repeat',
     },
     rating: {
-        width: '100%',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
         height: 50,
-        border: '1px solid tomato'
     },
     infoWrapper: {
-        width: '100%',
         height: 'max-content',
-        border: '1px solid green',
         padding: '0 50px'
     },
     title: {
-        textAlign: 'center',
-        fontSize: 70,
-        fontWeight: 700
+        margin: '0 auto 40px auto',
+        fontSize: 50,
+        fontWeight: 700,
     },
-    infoField: {
-        fontSize: 25,
+    optionWrapper: {
+        maxWidth: 1000,
         marginBottom: 25
+    },
+    optionTitle: {
+        fontSize: 20,
+        marginBottom: 25,
+        width: 'max-content',
+        color: 'tomato'
+    },
+    optionText: {
+        display: 'inline-block',
+        fontSize: 14,
     }
 });
 

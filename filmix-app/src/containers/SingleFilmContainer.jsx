@@ -10,8 +10,8 @@ import SingleFilmPage from '../views/SingleFilm/SingleFilmPage';
 // }
 class SingleFilmContainer extends Component {
     componentDidMount() {
-        // const filmId = this.props.match.params.filmId;
-        // this.props.getFilm(filmId);
+        const { filmId } = this.props.match.params;
+        this.props.getFilm(filmId);
     }
     render() {
         return (
@@ -20,4 +20,5 @@ class SingleFilmContainer extends Component {
     }
 }
 
-export default SingleFilmContainer;
+
+export default connect(mapStateToProps, { getFilm })(SingleFilmContainer);
