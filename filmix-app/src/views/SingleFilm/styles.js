@@ -2,24 +2,26 @@ import { makeStyles } from '@material-ui/core/styles';
 
 const useStyles = makeStyles({
     wrapper: {
-        marginTop: '7vh',
+        marginTop: '5vh',
         display: 'flex',
         padding: 100,
         paddingBottom: 0,
-        backgroundColor: '#7b1a2f'
+        backgroundColor: '#262e3c',
+        boxShadow: 'inset 0px 18px 0px 20px black'
     },
     imageWrapper: {
         display: 'flex',
         flexDirection: 'column',
         alignItems: 'center',
         height: 600,
-        width: 400
+        width: 400,
     },
     image: {
         width: 400,
         height: 550,
         backgroundSize: 'cover',
         backgroundRepeat: 'no-repeat',
+        boxShadow: '0 0 11px 6px black'
     },
     rating: {
         display: 'flex',

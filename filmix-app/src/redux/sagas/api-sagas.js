@@ -14,18 +14,18 @@ function* workerFilmsSaga() {
     }
 }
 
-// function* watcherFilmSaga() {
-//     yield takeEvery(FILM_REQUESTED, workerFilmSaga);
-// }
+function* watcherFilmSaga() {
+    yield takeEvery(FILM_REQUESTED, workerFilmSaga);
+}
 
-// function* workerFilmSaga(action) {
-//     try {
-//         const payload = yield call(getFilm, action.payload);
-//         yield put({ type: FILM_LOADED, payload });
-//     } catch (event) {
-//         yield put({ type: API_ERRORED , payload: event });
-//     }
-// }
+function* workerFilmSaga(action) {
+    try {
+        const payload = yield call(getFilm, action.payload);
+        yield put({ type: FILM_LOADED, payload });
+    } catch (event) {
+        yield put({ type: API_ERRORED , payload: event });
+    }
+}
 
 function getAllFilms() {
     return fetch("http://localhost:3000/api/films/").then(response => response.json());

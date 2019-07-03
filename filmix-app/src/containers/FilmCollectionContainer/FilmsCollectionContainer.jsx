@@ -5,11 +5,12 @@ import { getAllFilms } from '../../redux/actions/actionCreator';
 import { styles } from './styles';
 import FilterContainer from '../FilterContainer';
 import{ withRouter } from 'react-router-dom';
+import { Spinner } from '../../views/Spinner/Spinner';
 
 const mapStateToProps = state => {
-    console.log(state.films)
     return {
-        films: state.films.films
+        films: state.films.films,
+        loading: state.films.loading
     }
 }
 
@@ -20,7 +21,7 @@ class FilmCollectionContainer extends Component {
     }
 
     handleRedirect = (id) => {
-        this.props.history.replace(`/films/${id}`);
+        this.props.history.push(`/films/${id}`);
     }
     
     renderFilms = () => {
@@ -40,6 +41,9 @@ class FilmCollectionContainer extends Component {
     }
 
     render() {
+        if (this.props.loading) {
+            return <Spinner/>
+        }
         return (
             <div style={styles.wrapper}>
                 <div style={styles.title}>Film<span style={styles.styledWord}>MiX</span>  LIBRARY</div>

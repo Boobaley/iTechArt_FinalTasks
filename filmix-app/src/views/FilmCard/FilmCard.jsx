@@ -7,12 +7,13 @@ import CardMedia from '@material-ui/core/CardMedia';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import { useStyles } from './styles';
+import { stringCutter } from '../../js/customFunctions';
 
 export default function MediaCard(props) {
   const classes = useStyles();
   return (
     <Card className={classes.card}>
-      <CardActionArea>
+      <CardActionArea onClick={() => props.redirect(props.id)}>
         <CardMedia
           className={classes.media}
           image={props.image}
@@ -23,7 +24,7 @@ export default function MediaCard(props) {
             {props.filmName}
           </Typography>
           <Typography variant="body2" color="textSecondary" component="p">
-           {props.description}
+           { stringCutter(props.description, 100) }
           </Typography>
         </CardContent>
       </CardActionArea>
