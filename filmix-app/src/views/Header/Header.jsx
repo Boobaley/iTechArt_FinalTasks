@@ -49,10 +49,8 @@ return (
                             inputProps={{ 'aria-label': 'Search' }}
                         />
                     </div>
-                    <Button color='inherit'>LogIn</Button>
-                </div>
-                
-                
+                    <Button color='inherit' onClick={props.loginRedirect}>Sign In / Sign Up</Button>
+                </div> 
             </Toolbar>
         </AppBar>
     </div>

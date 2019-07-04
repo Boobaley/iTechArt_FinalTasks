@@ -23,7 +23,7 @@ class FilmCollectionContainer extends Component {
     handleRedirect = (id) => {
         this.props.history.push(`/films/${id}`);
     }
-    
+        
     renderFilms = () => {
         return this.props.films.map((item, id) => {
             return (

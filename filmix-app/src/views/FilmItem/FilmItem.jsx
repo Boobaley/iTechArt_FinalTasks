@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import Paper from '@material-ui/core/Paper';
 import FilmCard from '../FilmCard/FilmCard';
 import { stringCutter } from '../../js/customFunctions';
+
 const FilmItem = (props) => {
     const classes = useStyles();
     const [opened, toggleOpen] = useState(false);
