@@ -7,6 +7,7 @@ class SignInFormContainer extends Component {
     constructor(props) {
         super(props);
         this.state = {
+            name: '',
             email: '',
             password: '',
             loading: false
@@ -20,10 +21,10 @@ class SignInFormContainer extends Component {
     }
 
     onEmailChange = (event) => {
-        this.setState({email: event.target.value})
+        this.setState({ email: event.target.value });
     }
     onPasswordChange = (event) => {
-        this.setState({password: event.target.value})
+        this.setState({ password: event.target.value })
     }
 
     handleSubmit = (e) => {
@@ -32,6 +33,7 @@ class SignInFormContainer extends Component {
 
         const body = {
             user: {
+                name: this.state.name,
                 email: this.state.email,
                 password: this.state.password
             }
@@ -41,22 +43,22 @@ class SignInFormContainer extends Component {
         };
 
         const option = {method: 'POST', body: JSON.stringify(body), headers}
-        let url = 'http://localhost:3000/api/users'
+        let url = 'http://localhost:3000/api/signin'
 
         if (!this.props.signUpTracker) {
-            url = 'http://localhost:3000/api/users/login'
+            url = 'http://localhost:3000/api/login'
         }
 
         fetch(url, option)
             .then((result) => {
-                this.setState({loading: false});
-                return result;
+                this.setState({ loading: false });
+                return result.ok;
             })
             .then((result) => {
-                if (result.ok) {
-                    this.props.history.replace('/');
+                if (result) {
+                    return this.props.history.replace('/');
                 }
-                this.props.history.replace('/login')
+                return this.props.history.replace('/login');
             });
     }
 

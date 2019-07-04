@@ -6,11 +6,18 @@ import Paper from '@material-ui/core/Paper';
 export const SignInForm = (props) => {
     const classes = useStyles();
 
-    console.log(props.signUpTracker);
     return(
         <Paper className={classes.wrapper}>
             <h1 className={classes.title}>Sign In / Sign Up</h1>
             <form onSubmit={props.submit} className={classes.form}>
+                <input 
+                    type="text"
+                    placeholder="Name"
+                    required
+                    className={classes.input}
+                    onChange={props.name}
+                    value={props.nameVal}
+                />
                 <input 
                     type="email"
                     placeholder="Email"
@@ -29,7 +36,7 @@ export const SignInForm = (props) => {
                     value={props.passwordVal}
                 />
                 <i class="material-icons" 
-                    style={{position: "absolute",fontSize: 40, color: 'lightgrey', top: 10, right: -10, width: 55,  cursor: 'pointer'}}
+                    style={{position: "absolute",fontSize: 30, color: 'lightgrey', top: 10, right: -10, width: 55,  cursor: 'pointer'}}
                     onClick={props.getBack}
                 >
                     close
