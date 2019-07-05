@@ -1,8 +1,13 @@
-import { FILMS_REQUESTED, FILM_REQUESTED } from '../constants/actionTypes';
+import { FILMS_REQUESTED, FILM_REQUESTED, USERNAME_REQUESTED } from '../constants/actionTypes';
+
 export function getAllFilms() {
     return { type: FILMS_REQUESTED };
 };
 
 export function getFilm(payload) {
     return { type: FILM_REQUESTED, payload }
-}
+};
+
+export function getUserName() {
+    return { type: USERNAME_REQUESTED }
+};

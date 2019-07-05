@@ -34,7 +34,7 @@ const MenuNavigation = (props) => {
                 <Tab 
                     label={ <span className={classes.tabText}>Categories</span> }
                     component={Link}
-                    to='categories'
+                    to='/categories'
                 />
             </Tabs>
         </div>    

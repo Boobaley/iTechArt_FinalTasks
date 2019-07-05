@@ -9,21 +9,24 @@ export const SignInForm = (props) => {
     return(
         <Paper className={classes.wrapper}>
             <h1 className={classes.title}>Sign In / Sign Up</h1>
-            <form onSubmit={props.submit} className={classes.form}>
-                <input 
-                    type="text"
-                    placeholder="Name"
-                    required
-                    className={classes.input}
-                    onChange={props.name}
-                    value={props.nameVal}
-                />
+            <form onSubmit={props.submitForm} className={classes.form}>
+                { props.signUpTracker
+                    ? <input 
+                        type="text"
+                        placeholder="Name"
+                        required
+                        className={classes.input}
+                        onChange={props.nickChange}
+                        value={props.nickVal}
+                      />
+                    : null
+                }
                 <input 
                     type="email"
                     placeholder="Email"
                     required
                     className={classes.input}
-                    onChange={props.email}
+                    onChange={props.emailChange}
                     value={props.emailVal}
                 />
                 <input 
@@ -32,21 +35,36 @@ export const SignInForm = (props) => {
                     minLength="6"
                     required
                     className={classes.input}
-                    onChange={props.password}
+                    onChange={props.passwordChange}
                     value={props.passwordVal}
                 />
-                <i class="material-icons" 
-                    style={{position: "absolute",fontSize: 30, color: 'lightgrey', top: 10, right: -10, width: 55,  cursor: 'pointer'}}
-                    onClick={props.getBack}
-                >
-                    close
-                </i>
-                {props.signUpTracker === false ? <Button type="submit" variant='contained' color="primary">Sign In</Button> : null}
-                {props.signUpTracker === false ? <div className={classes.or}>or</div> : null}
-                {props.signUpTracker === false 
+                { !props.signUpTracker ? <Button type="submit" variant='contained' color="primary">Sign In</Button> : null}
+                { !props.signUpTracker ? <div className={classes.or}>or</div> : null}
+                { !props.signUpTracker 
                     ? <Button variant='contained' color="secondary" onClick={props.signUp}>Sign Up</Button>
                     : <Button type="submit" variant='contained' color="secondary">Sign Up</Button>
                 }
+
+                <i 
+                    className="material-icons" 
+                    style={{position: "absolute",fontSize: 30, color: '#000', top: 10, right: -10, width: 55,  cursor: 'pointer'}}
+                    onClick={props.close}
+                >
+                    close
+                </i>
+
+                { props.signUpTracker 
+                
+                    ? <i 
+                        className="material-icons"
+                        style={{position: "absolute",fontSize: 30, color: '#000', top: 10, left: 10, width: 55,  cursor: 'pointer'}}
+                        onClick={props.back}
+                      >
+                        arrow_back
+                      </i>
+                    : null
+                }
+                
             </form>
         </Paper>  
     )

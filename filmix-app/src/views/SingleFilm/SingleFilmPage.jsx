@@ -6,7 +6,6 @@ import Rater from 'react-rater'
 import 'react-rater/lib/react-rater.css'
 
 const SingleFilmPage = (props) => {
-    console.log(props.title)
     const classes = useStyles();
     
     return(

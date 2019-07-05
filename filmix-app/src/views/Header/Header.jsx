@@ -12,7 +12,7 @@ import MenuNavigation from '../MenuNavigation/MenuNavigation';
 
 const Header = (props) => {
 const classes = useStyles();
-
+console.log(props.user.user)
 return (
     <div className={classes.root}>
         <AppBar position="static" >
@@ -49,7 +49,7 @@ return (
                             inputProps={{ 'aria-label': 'Search' }}
                         />
                     </div>
-                    <Button color='inherit' onClick={props.loginRedirect}>Sign In / Sign Up</Button>
+                    <Button color='inherit' onClick={props.loginRedirect}>{!props.user.user ? 'Sign In / Sign Up' : 'Logout'}</Button>
                 </div> 
             </Toolbar>
         </AppBar>

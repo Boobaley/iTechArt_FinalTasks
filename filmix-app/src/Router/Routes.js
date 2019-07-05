@@ -54,7 +54,7 @@ const Routes = () => {
                 />
                 <Route 
                     exact
-                    path='/signUp'
+                    path='/signup'
                     render={() =>
                         <div>
                             <SignInFormContainer signUpTracker={true}/>

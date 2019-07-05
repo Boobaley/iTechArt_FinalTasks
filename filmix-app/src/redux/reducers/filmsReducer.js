@@ -16,5 +16,5 @@ export const films = (state = initialState, { payload, type }) => {
         default: {
             return state;
         }
-    }  
-}
+    };  
+};
