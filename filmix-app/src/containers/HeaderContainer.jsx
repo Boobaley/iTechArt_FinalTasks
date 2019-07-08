@@ -15,12 +15,18 @@ class HeaderContainer extends React.Component {
     }
 
     handleLogout = () => {
-
+        localStorage.removeItem('Token');
     }
 
     render() {
         return(
-            <Header current={this.props.current} loginRedirect={this.handleLogin} user={this.props.user}/>
+            <Header 
+                current={this.props.current} 
+                loginRedirect={this.handleLogin} 
+                user={this.props.user} 
+                logout={this.handleLogout}
+                token={localStorage.Token}
+            />
         )
     }
 }

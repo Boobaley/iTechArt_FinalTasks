@@ -79,6 +79,7 @@ class SignInFormContainer extends Component {
                 return result.json();
             })
             .then((result) => {
+                console.log(result);
                 if (result.token) {
                     localStorage.setItem('Token', result.token);
                     store.dispatch({
