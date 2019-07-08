@@ -2,41 +2,36 @@ import React from 'react';
 import Radio from '@material-ui/core/Radio';
 import { useStyles } from './styles'; 
 
-export default function RadioButtons() {
-  const [selectedValue, setSelectedValue] = React.useState('all');
+export default function RadioButtons(props) {
   const classes = useStyles();
-
-  function handleChange(event) {
-    setSelectedValue(event.target.value);
-  }
 
   return (
     <div className={classes.wrapper}>
     <label className={classes.label}>All</label>
       <Radio
-        checked={selectedValue === 'all'}
-        onChange={handleChange}
+        checked={props.current === 'all'}
+        onChange={props.onFilterChange}
         value="all"
         className={classes.radioButton}
       />
       <label className={classes.label}>Comedies</label>
       <Radio
-        checked={selectedValue === 'comedies'}
-        onChange={handleChange}
+        checked={props.current === 'comedies'}
+        onChange={props.onFilterChange}
         value="comedies"
         className={classes.radioButton}
       />
        <label className={classes.label}>Horrors</label>
       <Radio
-        checked={selectedValue === 'horrors'}
-        onChange={handleChange}
+        checked={props.current === 'horrors'}
+        onChange={props.onFilterChange}
         value="horrors"
         className={classes.radioButton}
       />
        <label className={classes.label}>Fantasy</label>
       <Radio
-        checked={selectedValue === 'fantasy'}
-        onChange={handleChange}
+        checked={props.current === 'fantasy'}
+        onChange={props.onFilterChange}
         value="fantasy"
         className={classes.radioButton}
       />

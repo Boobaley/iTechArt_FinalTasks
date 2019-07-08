@@ -17,7 +17,7 @@ export default function MediaCard(props) {
         <CardMedia
           className={classes.media}
           image={props.image}
-          title="Contemplative Reptile"
+        //   title="Contemplative Reptile"
         />
         <CardContent>
           <Typography gutterBottom variant="h5" component="h2">
@@ -29,7 +29,7 @@ export default function MediaCard(props) {
         </CardContent>
       </CardActionArea>
       <CardActions>
-        <Button size="small" color="primary">
+        <Button size="small" color="primary" onClick={() => alert('Not implemented yet')}>
           Share
         </Button>
         <Button size="small" color="primary" onClick={() => props.redirect(props.id)}>
@@ -39,3 +39,4 @@ export default function MediaCard(props) {
     </Card>
   );
 }
+

@@ -2,8 +2,9 @@ import React from "react";
 import Slider from "react-slick";
 import { useStyles } from './styles';
 import Button from '@material-ui/core/Button';
+import { withRouter } from 'react-router-dom';
 
-const SimpleSlider = () => {
+const SimpleSlider = (props) => {
     const classes = useStyles();
     const settings = {
         dots: false,
@@ -24,17 +25,35 @@ const SimpleSlider = () => {
             <Slider {...settings} className={classes.slidesWrapper}>
                 <div className={classes.sliderItem}>
                     <div className={classes.sliderItemContent_2}>
-                        <Button variant="contained" color="primary" className={classes.button}>Read More</Button>
+                        <Button 
+                            variant="contained" 
+                            color="primary" 
+                            className={classes.button}
+                            onClick={() => props.history.push('/films')}
+                        >   Go to Library
+                        </Button>
                     </div>
                 </div>
                 <div className={classes.sliderItem}>
                     <div className={classes.sliderItemContent_1}>
-                        <Button variant="contained" color="primary" className={classes.button}>Read More</Button>
+                        <Button 
+                            variant="contained" 
+                            color="primary" 
+                            className={classes.button}
+                            onClick={() => props.history.push('/films')}
+                        >   Go to Library
+                        </Button>
                     </div>
                 </div>
                 <div className={classes.sliderItem}>
                     <div className={classes.sliderItemContent_3}>
-                        <Button variant="contained" color="primary" className={classes.button}>Read More</Button>
+                        <Button 
+                            variant="contained" 
+                            color="primary" 
+                            className={classes.button}
+                            onClick={() => props.history.push('/films')}
+                        >   Go to Library
+                        </Button>
                     </div>
                 </div>
             </Slider>
@@ -42,4 +61,4 @@ const SimpleSlider = () => {
     );
   }
 
-export default SimpleSlider;
+export default withRouter(SimpleSlider);

@@ -22,15 +22,15 @@ const SingleFilmPage = (props) => {
                     <div className={classes.title}>{props.film.title}</div>
                     <div className={classes.optionWrapper}>
                         <span className={classes.optionTitle}>Director: </span> 
-                        <div style={{display: 'inline-block'}}></div>
+                        <div style={{display: 'inline-block'}}>{props.film.director}</div>
                     </div>
                     <div className={classes.optionWrapper}>
-                        <span className={classes.optionTitle}>Actors: </span> 
-                        <div style={{display: 'inline-block'}}></div>
+                        <span className={classes.optionTitle}>Actors: </span>  
+                        <div style={{display: 'inline-block'}}>{props.film.actors}</div>
                     </div>
                     <div className={classes.optionWrapper}>
-                        <span className={classes.optionTitle}>Creation Date: </span> 
-                        <div style={{display: 'inline-block'}}></div>
+                        <span className={classes.optionTitle}>Creation Year: </span> 
+                        <div style={{display: 'inline-block'}}>{props.film.creationYear}</div>
                     </div>
                     <div className={classes.optionWrapper}>
                         <span className={classes.optionTitle}>Description: </span> 

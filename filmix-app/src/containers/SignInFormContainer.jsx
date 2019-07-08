@@ -2,8 +2,6 @@ import React, { Component } from 'react';
 import { SignInForm } from '../views/SignForm/SignInForm';
 import{ withRouter } from 'react-router-dom';
 import { Spinner } from '../views/Spinner/Spinner';
-import store from '../redux/store';
-import { USERNAME_REQUESTED } from '../redux/constants/actionTypes';
 
 class SignInFormContainer extends Component {
     constructor(props) {
@@ -82,9 +80,7 @@ class SignInFormContainer extends Component {
                 console.log(result);
                 if (result.token) {
                     localStorage.setItem('Token', result.token);
-                    store.dispatch({
-                        type: USERNAME_REQUESTED
-                    });
+                    localStorage.setItem('userName', result.userName);
                     this.setState({ nick: '', email: '', password: '' });
                     this.props.history.replace('/');
                 } else {

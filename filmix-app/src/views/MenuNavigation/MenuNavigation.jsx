@@ -31,11 +31,11 @@ const MenuNavigation = (props) => {
                     component={Link}
                     to='/films'
                 />
-                <Tab 
+                {/* <Tab 
                     label={ <span className={classes.tabText}>Categories</span> }
                     component={Link}
                     to='/categories'
-                />
+                /> */}
             </Tabs>
         </div>    
     );

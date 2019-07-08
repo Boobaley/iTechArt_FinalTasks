@@ -16,6 +16,12 @@ export const styles = {
         flexWrap: 'wrap',
         padding: 50, 
         alignItems: 'center', 
+        justifyContent: 'center',
         width: '100%'
+    },
+    titleWrapper: {
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'space-between'
     }
 };

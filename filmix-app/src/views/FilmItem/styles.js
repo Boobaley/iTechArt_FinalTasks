@@ -11,10 +11,6 @@ export const useStyles = makeStyles(theme => ({
         marginBottom: 20,
         width: 155,
         minHeight: 267,
-        '&:hover': {
-            color: 'salmon',
-            transition: '.3s'
-        },
         color: '#000'
     },
     image: {

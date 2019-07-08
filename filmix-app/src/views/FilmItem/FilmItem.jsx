@@ -12,7 +12,16 @@ const FilmItem = (props) => {
         <Paper className={classes.wrapper} onMouseEnter={() => toggleOpen(!opened)} onMouseLeave={() => toggleOpen(!opened)}>
             <div className={classes.image} style={{backgroundImage: `url(${props.avatar})`}}></div>
             <div className={classes.title}>{ stringCutter(props.filmName, 14) }</div>
-            { opened ? <FilmCard id={props.id} image={props.avatar} filmName={props.filmName} description={props.description} redirect={props.redirect}/> : null }
+            { opened 
+                ? <FilmCard 
+                    id={props.id} 
+                    image={props.avatar} 
+                    filmName={props.filmName} 
+                    description={props.description} 
+                    redirect={props.redirect}
+                  /> 
+                : null 
+            }
         </Paper>
     )
 };

@@ -30,7 +30,7 @@ return (
                     noWrap
                 >
                     <a href="/" style={{textDecoration: 'none', color: '#fff'}}>
-                    Film<span className={classes.coloredWord}>MiX</span>  
+                        Film<span className={classes.coloredWord}>MiX</span>  
                     </a>  
                 </Typography>
                 <MenuNavigation current={props.current} />
@@ -48,9 +48,9 @@ return (
                             inputProps={{ 'aria-label': 'Search' }}
                         />
                     </div>
-                    {!props.token
+                    {!localStorage.Token
                         ? <Button color='inherit' onClick={props.loginRedirect}>Sign In / Sign Up</Button>
-                        : <Button color='inherit' onClick={props.logout}>Logout</Button>
+                        : <Button color='inherit' onClick={props.logout}>{localStorage.userName}</Button>
                     }
                     
                 </div> 

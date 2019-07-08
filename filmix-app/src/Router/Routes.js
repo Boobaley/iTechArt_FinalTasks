@@ -34,7 +34,7 @@ const Routes = () => {
                     path='/films/:filmId'
                     component={SingleFilmContainer}
                 />
-                <Route 
+                {/* <Route 
                     exact
                     path='/categories'
                     render={() =>
@@ -42,7 +42,7 @@ const Routes = () => {
                             <HeaderContainer current={2}/>
                         </div>
                     }
-                />
+                /> */}
                 <Route 
                     exact
                     path='/login'

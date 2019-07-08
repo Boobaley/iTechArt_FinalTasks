@@ -4,9 +4,7 @@ import {
     FILMS_LOADED, 
     API_ERRORED, 
     FILM_LOADED, 
-    FILM_REQUESTED, 
-    USERNAME_REQUESTED, 
-    USERNAME_RECEIVED 
+    FILM_REQUESTED,
 } from '../constants/actionTypes';
 
  function* watcherFilmsSaga() {
@@ -43,32 +41,9 @@ function getFilm(payload) {
     return fetch(`http://localhost:3000/api/films/${payload}`).then(response => response.json());
 }
 
-function* watcherUserSaga() {
-    yield takeEvery(USERNAME_REQUESTED, workerUserSaga);
-}
-
-function* workerUserSaga() {
-    try {
-        const payload = yield call(getUserName);
-        yield put({ type: USERNAME_RECEIVED, payload });
-    } catch (event) {
-        yield put({ type: API_ERRORED , payload: event });
-    }
-}
-
-function getUserName() {
-    const options = {
-        headers: { 
-            Authorization: localStorage.getItem('Token')
-         }
-    }
-    return fetch(`http://localhost:3000/api/getusername`, options).then(response => response.json());
-}
-
 export default function*() {
     yield all([
         watcherFilmsSaga(),
         watcherFilmSaga(),
-        watcherUserSaga()
     ]);
 };

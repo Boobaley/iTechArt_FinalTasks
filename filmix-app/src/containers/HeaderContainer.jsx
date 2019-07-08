@@ -1,21 +1,26 @@
 import React from 'react';
 import Header from '../views/Header/Header';
 import{ withRouter } from 'react-router-dom';
-import { connect } from 'react-redux';
 
-const mapStateToProps = (state) => {
-    return {
-        user: state.user
-    }
-} 
 class HeaderContainer extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            loggedOut: true 
+        }
+    }
 
     handleLogin = () => {
-        return !this.props.user.user ?  this.props.history.replace('/login') : null 
+        return !localStorage.Token ?  this.props.history.push('/login') : null 
     }
 
     handleLogout = () => {
-        localStorage.removeItem('Token');
+        localStorage.clear();
+        this.setState({ loggedOut: !this.state.loggedOut })
+    }
+
+    showLogout = () => {
+
     }
 
     render() {
@@ -25,10 +30,9 @@ class HeaderContainer extends React.Component {
                 loginRedirect={this.handleLogin} 
                 user={this.props.user} 
                 logout={this.handleLogout}
-                token={localStorage.Token}
             />
         )
     }
 }
 
-export default withRouter(connect(mapStateToProps)(HeaderContainer));
+export default withRouter(HeaderContainer);

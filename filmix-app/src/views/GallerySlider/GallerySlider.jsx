@@ -4,7 +4,7 @@ import { styles } from './styles';
 
 
 class GallerySlider extends Component {
-    renderItems = () => {
+    renderSlides = () => {
         return this.props.gallery.map((link, index) => {
             return (
                 <div key={index}>
@@ -64,7 +64,7 @@ class GallerySlider extends Component {
           <div style={styles.wrapper}>
                 <h1 style={styles.sliderTitle}>Moments...</h1>
             <Slider {...settings}>
-              {this.props.gallery && this.renderItems()}
+              {this.props.gallery && this.renderSlides()}
             </Slider>
           </div>
         );
