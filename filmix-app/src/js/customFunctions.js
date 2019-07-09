@@ -1,7 +1,7 @@
-export const stringCutter = (string, quntityOfSymbols) => {
-    if (string.length < quntityOfSymbols) {
+export const stringCutter = (string, quantityOfSymbols) => {
+    if (string.length < quantityOfSymbols) {
         return string;
     } else {
-        return string.slice(0, quntityOfSymbols - 3) + '...';
+        return string.slice(0, quantityOfSymbols - 3) + '...';
     }
 };

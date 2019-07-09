@@ -13,7 +13,7 @@ class GallerySlider extends Component {
                             height: 250,
                             marginRight: 10,
                             backgroundImage: `url(${link})`,
-                            backgroundSize:'cover', 
+                            backgroundSize:'cover',
                             backgroundRepeat: 'no-repeat',
                             '&:last-of-type': {
                                 marginRight: 0

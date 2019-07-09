@@ -32,7 +32,7 @@ class SignInFormContainer extends Component {
 
     handleBack = () => {
         this.setState({ userName: '', email: '', password: '' });
-        this.props.history.replace('/login');
+        this.props.history.goBack();
     }
 
     handleSignUp = (e) => {
