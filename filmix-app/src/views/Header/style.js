@@ -15,7 +15,17 @@ export const useStyles = makeStyles(theme => ({
         fontWeight: 700
     },
     searchLoginWrapper : {
-        display: 'flex'
+        display: 'flex',
+        alignItems: 'center'
+    },
+    input: {
+        padding: 10,
+        borderRadius: 5,
+        border: 'none',
+        outline: 0,
+    },
+    inputWrapper: {
+        position: 'relative'
     },
     menuButton: {
       marginRight: theme.spacing(2),
@@ -28,44 +38,6 @@ export const useStyles = makeStyles(theme => ({
       [theme.breakpoints.up('sm')]: {
         display: 'block',
         width: 'max-content'
-      },
-    },
-    search: {
-      position: 'relative',
-      borderRadius: theme.shape.borderRadius,
-      backgroundColor: fade(theme.palette.common.white, 0.15),
-      '&:hover': {
-        backgroundColor: fade(theme.palette.common.white, 0.25),
-      },
-      marginLeft: 0,
-      width: '100%',
-      [theme.breakpoints.up('sm')]: {
-        marginLeft: theme.spacing(1),
-        width: 'auto',
-        marginRight: 10
-      },
-    },
-    searchIcon: {
-      width: theme.spacing(7),
-      height: '100%',
-      position: 'absolute',
-      pointerEvents: 'none',
-      display: 'flex',
-      alignItems: 'center',
-      justifyContent: 'center',
-    },
-    inputRoot: {
-      color: 'inherit',
-    },
-    inputInput: {
-      padding: theme.spacing(1, 1, 1, 7),
-      transition: theme.transitions.create('width'),
-      width: '100%',
-      [theme.breakpoints.up('sm')]: {
-        width: 120,
-        '&:focus': {
-          width: 200,
-        },
       },
     },
   }));

@@ -19,10 +19,6 @@ class HeaderContainer extends React.Component {
         this.setState({ loggedOut: !this.state.loggedOut })
     }
 
-    showLogout = () => {
-
-    }
-
     render() {
         return(
             <Header 
