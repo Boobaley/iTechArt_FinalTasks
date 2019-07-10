@@ -10,7 +10,7 @@ import { Spinner } from '../../views/Spinner/Spinner';
 const mapStateToProps = state => {
     return {
         films: state.films.films,
-        loading: state.films.loading
+        loading: state.films.loading,
     }
 }
 
@@ -18,7 +18,7 @@ class FilmCollectionContainer extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            selectedValue: 'all'
+            selectedValue: 'all',
         }
     }
 
@@ -105,7 +105,7 @@ class FilmCollectionContainer extends Component {
     }
 
     handleFilterChange = (event) => {
-        this.setState({selectedValue: event.target.value})
+        this.setState({ selectedValue: event.target.value })
     }
 
     filter = () => {
@@ -122,6 +122,7 @@ class FilmCollectionContainer extends Component {
         if (this.props.loading) {
             return <Spinner/>
         }
+
         return (
             <div style={styles.wrapper}>
                 <div style={styles.titleWrapper}>
@@ -138,3 +139,4 @@ class FilmCollectionContainer extends Component {
 
 
 export default withRouter(connect(mapStateToProps, { getAllFilms })(FilmCollectionContainer));
+

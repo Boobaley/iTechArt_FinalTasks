@@ -15,6 +15,15 @@ class SingleFilmContainer extends Component {
         const { filmId } = this.props.match.params;
         this.props.getFilm(filmId);
     }
+
+    shouldComponentUpdate(nexProps, nextState) {
+        if (nexProps.location.pathname !== this.props.location.pathname) {
+            const { filmId } = nexProps.match.params;
+            return this.props.getFilm(filmId);
+        }
+        return true;
+    }
+
     render() {
         if (this.props.loading) {
             return <Spinner/>

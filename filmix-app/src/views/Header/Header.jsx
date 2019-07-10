@@ -7,7 +7,7 @@ import MenuIcon from '@material-ui/icons/Menu';
 import { useStyles } from './style';
 import Button from '@material-ui/core/Button';
 import MenuNavigation from '../MenuNavigation/MenuNavigation';
-import Search  from '../Search/Search';
+import SearchContainer  from '../../containers/SearchContainer';
 
 const Header = (props) => {
     const classes = useStyles();
@@ -36,7 +36,7 @@ const Header = (props) => {
                     <MenuNavigation current={props.current} />
                     <div className={classes.searchLoginWrapper}>
                         {props.current === 1 
-                            ?  <Search/> 
+                            ?  <SearchContainer/> 
                             : null
                         }
                         
