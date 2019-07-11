@@ -11,17 +11,19 @@ import {
     yield takeEvery(FILMS_REQUESTED, workerFilmsSaga);
 }
 
-function* workerFilmsSaga() {
+function* workerFilmsSaga(action) {
     try {
-        const payload = yield call(getAllFilms);
+        const payload = yield call(getAllFilms, action.payload);
         yield put({ type: FILMS_LOADED, payload });
     } catch (event) {
         yield put({ type: API_ERRORED , payload: event });
     }
 }
 
-function getAllFilms() {
-    return fetch("http://localhost:3000/api/films/").then(response => response.json());
+function getAllFilms(payload) {
+    return fetch(`http://localhost:3000/api/films?pageNo=${payload}&size=27`).then(response => {
+        return response.json()
+    });
 }
 
 function* watcherFilmSaga() {

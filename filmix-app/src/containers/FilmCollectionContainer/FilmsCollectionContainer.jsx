@@ -6,11 +6,11 @@ import { styles } from './styles';
 import Filter  from '../../views/Filter/Filter';
 import{ withRouter } from 'react-router-dom';
 import { Spinner } from '../../views/Spinner/Spinner';
+import InfiniteScroll from 'react-infinite-scroll-component'; 
 
 const mapStateToProps = state => {
     return {
         films: state.films.films,
-        loading: state.films.loading,
     }
 }
 
@@ -23,7 +23,12 @@ class FilmCollectionContainer extends Component {
     }
 
     componentDidMount() {
-        this.props.getAllFilms();
+        this.loadАFilms();
+    }
+
+    loadАFilms = () => {
+        const counter =  this.props.films.length / 27 + 1 
+        this.props.getAllFilms(counter);
     }
 
     handleRedirect = (id) => {
@@ -35,11 +40,7 @@ class FilmCollectionContainer extends Component {
             return (
                 <div key={id}>
                     <FilmItem 
-                        id={item._id}
-                        filmName={item.title} 
-                        description={item.description} 
-                        avatar={item.avatar}
-                        category={item.categoryId}
+                        {...item}
                         redirect={this.handleRedirect}
                     />
                 </div>
@@ -54,11 +55,7 @@ class FilmCollectionContainer extends Component {
                 return (
                     <div key={id}>
                         <FilmItem 
-                            id={item._id}
-                            filmName={item.title} 
-                            description={item.description} 
-                            avatar={item.avatar}
-                            category={item.categoryId}
+                            {...item}
                             redirect={this.handleRedirect}
                         />
                     </div>
@@ -73,11 +70,7 @@ class FilmCollectionContainer extends Component {
                 return (
                     <div key={id}>
                         <FilmItem 
-                            id={item._id}
-                            filmName={item.title} 
-                            description={item.description} 
-                            avatar={item.avatar}
-                            category={item.categoryId}
+                            {...item}
                             redirect={this.handleRedirect}
                         />
                     </div>
@@ -92,11 +85,7 @@ class FilmCollectionContainer extends Component {
                 return (
                     <div key={id}>
                         <FilmItem 
-                            id={item._id}
-                            filmName={item.title} 
-                            description={item.description} 
-                            avatar={item.avatar}
-                            category={item.categoryId}
+                            {...item}
                             redirect={this.handleRedirect}
                         />
                     </div>
@@ -119,7 +108,7 @@ class FilmCollectionContainer extends Component {
     }
 
     render() {
-        if (this.props.loading) {
+        if (this.props.films.length === 0) {
             return <Spinner/>
         }
 
@@ -129,9 +118,16 @@ class FilmCollectionContainer extends Component {
                     <div style={styles.title}>Film<span style={styles.styledWord}>MiX</span> LIBRARY</div>
                     <Filter checkValue={this.checkValue} current={this.state.selectedValue} onFilterChange={this.handleFilterChange}/>
                 </div>
-                <div style={styles.filmItemsWrapper}>
-                    {this.filter()}
-                </div>
+                <InfiniteScroll 
+                    dataLength={this.props.films.length}
+                    next={this.loadАFilms}
+                    hasMore={true}
+                    style={{ overflow: 'inherit' }}
+                >
+                    <div style={styles.filmItemsWrapper}>
+                        {this.filter()}
+                    </div>
+                </InfiniteScroll>
             </div> 
         )
     }

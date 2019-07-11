@@ -11,12 +11,12 @@ const FilmItem = (props) => {
     return(
         <Paper className={classes.wrapper} onMouseEnter={() => toggleOpen(!opened)} onMouseLeave={() => toggleOpen(!opened)}>
             <div className={classes.image} style={{backgroundImage: `url(${props.avatar})`}}></div>
-            <div className={classes.title}>{ stringCutter(props.filmName, 14) }</div>
+            <div className={classes.title}>{ stringCutter(props.title, 14) }</div>
             { opened 
                 ? <FilmCard 
-                    id={props.id} 
+                    id={props._id} 
                     image={props.avatar} 
-                    filmName={props.filmName} 
+                    filmName={props.title} 
                     description={props.description} 
                     redirect={props.redirect}
                   /> 

@@ -3,6 +3,7 @@ import SingleFilmPage from '../views/SingleFilm/SingleFilmPage';
 import { connect } from 'react-redux';
 import { getFilm } from '../redux/actions/actionCreator';
 import { Spinner } from '../views/Spinner/Spinner';
+import { ErrorPage } from '../views/Error/ErrorPage';
 
 const mapStateToProps = state => {
     return {
@@ -28,11 +29,13 @@ class SingleFilmContainer extends Component {
         if (this.props.loading) {
             return <Spinner/>
         }
+        if (this.props.film.success === false) {
+            return <ErrorPage/>
+        }
         return (
            <SingleFilmPage film={this.props.film}/>  
         );
     }
 }
-
 
 export default connect(mapStateToProps, { getFilm })(SingleFilmContainer);

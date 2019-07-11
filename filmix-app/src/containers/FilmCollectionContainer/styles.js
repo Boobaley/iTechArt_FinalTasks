@@ -1,6 +1,6 @@
 export const styles = {
     wrapper: {
-        marginTop: '10vh'
+        marginTop: '10vh',
     },
     title: {
         marginLeft: 50,
@@ -17,7 +17,6 @@ export const styles = {
         padding: 50, 
         alignItems: 'center', 
         justifyContent: 'center',
-        width: '100%'
     },
     titleWrapper: {
         display: 'flex',

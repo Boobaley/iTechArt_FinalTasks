@@ -8,7 +8,7 @@ const initialState = {
 export const films = (state = initialState, { payload, type }) => {
     switch(type) {
         case FILMS_LOADED:
-            return { ...state, films: payload };
+            return { ...state, films: [...state.films, ...payload] };
         case FILM_LOADED:
             return { ...state, film: payload };
         case SET_LOADING:

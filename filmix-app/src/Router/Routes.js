@@ -5,6 +5,7 @@ import Slider from '../views/Slider/Slider';
 import FilmItemContainer from '../containers/FilmCollectionContainer/FilmsCollectionContainer';
 import SingleFilmContainer from '../containers/SingleFilmContainer.jsx';
 import SignInFormContainer from '../containers/SignInFormContainer';
+import { ErrorPage } from '../views/Error/ErrorPage';
 
 const Routes = () => {
     return(
@@ -34,15 +35,6 @@ const Routes = () => {
                     path='/films/:filmId'
                     component={SingleFilmContainer}
                 />
-                {/* <Route 
-                    exact
-                    path='/categories'
-                    render={() =>
-                        <div>
-                            <HeaderContainer current={2}/>
-                        </div>
-                    }
-                /> */}
                 <Route 
                     exact
                     path='/login'
@@ -58,6 +50,16 @@ const Routes = () => {
                     render={() =>
                         <div>
                             <SignInFormContainer signUpTracker={true}/>
+                        </div>
+                    }
+                />
+                <Route 
+                    exact
+                    path='*'
+                    render={() =>
+                        <div>
+                            <HeaderContainer current={null}/>
+                            <ErrorPage />
                         </div>
                     }
                 />

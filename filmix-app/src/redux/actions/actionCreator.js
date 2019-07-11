@@ -1,7 +1,7 @@
 import { FILMS_REQUESTED, FILM_REQUESTED } from '../constants/actionTypes';
 
-export function getAllFilms() {
-    return { type: FILMS_REQUESTED };
+export function getAllFilms(payload) {
+    return { type: FILMS_REQUESTED, payload };
 };
 
 export function getFilm(payload) {

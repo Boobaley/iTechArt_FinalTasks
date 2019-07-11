@@ -1,5 +1,4 @@
 import React from 'react';
-import { styles } from './styles';
 import Paper from '@material-ui/core/Paper';
 import { useStyles } from './styles';
 
