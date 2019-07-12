@@ -31,4 +31,24 @@ export const useStyles = makeStyles(() => ({
         margin: '0 auto',
         fontSize: 20
     }
-}))
+}));
+
+export const iconsStyles = {
+    back: {
+        position: "absolute",
+        fontSize: 30, 
+        color: '#000', 
+        top: 10, left: 10, 
+        width: 55,  
+        cursor: 'pointer'
+    },
+    close: {
+        position: "absolute",
+        fontSize: 30, 
+        color: '#000', 
+        top: 10, 
+        right: -10, 
+        width: 55,  
+        cursor: 'pointer'
+    }
+}

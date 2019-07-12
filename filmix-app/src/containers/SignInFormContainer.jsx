@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { SignInForm } from '../views/SignForm/SignInForm';
 import{ withRouter } from 'react-router-dom';
 import { Spinner } from '../views/Spinner/Spinner';
+import { signUpUrl, logInUrl } from '../config/config';
 
 class SignInFormContainer extends Component {
     constructor(props) {
@@ -59,10 +60,8 @@ class SignInFormContainer extends Component {
         };
 
         const option = { method: 'POST', body: JSON.stringify(body), headers };
-        let url = 'http://localhost:3000/api/signup';
 
         if (!this.props.signUpTracker) {
-            url = 'http://localhost:3000/api/login';
             body = {
                 user: {
                     email: this.state.email,
@@ -71,7 +70,7 @@ class SignInFormContainer extends Component {
             }
         };
 
-        fetch(url, option)
+        fetch(!this.props.signUpTracker ? logInUrl : signUpUrl, option)
             .then((result) => {
                 this.setState({ loading: false });
                 return result.json();
@@ -100,9 +99,9 @@ class SignInFormContainer extends Component {
                 <SignInForm 
                     signUpTracker={this.props.signUpTracker}
                     nickChange={this.onNickChange}
-                    nickVal={this.state.nick}
+                    nickValue={this.state.nick}
                     emailChange={this.onEmailChange}
-                    emailVal={this.state.email}
+                    emailValue={this.state.email}
                     passwordChange={this.onPasswordChange}
                     passwordVal={this.state.password}
                     close={this.handleClose}

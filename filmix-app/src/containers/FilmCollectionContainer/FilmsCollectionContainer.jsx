@@ -23,10 +23,10 @@ class FilmCollectionContainer extends Component {
     }
 
     componentDidMount() {
-        this.loadАFilms();
+        this.loadFilms();
     }
 
-    loadАFilms = () => {
+    loadFilms = () => {
         const counter =  this.props.films.length / 27 + 1 
         this.props.getAllFilms(counter);
     }
@@ -35,8 +35,10 @@ class FilmCollectionContainer extends Component {
         this.props.history.push(`/films/${id}`);
     }
         
-    renderAllFilms = () => {
-        return this.props.films.map((item, id) => {
+    renderFilms = (categoryId) => {
+        return this.props.films
+        .filter(this.state.selectedValue !== 'all' ? item => item.categoryId === categoryId : item => item)
+        .map((item, id) => {
             return (
                 <div key={id}>
                     <FilmItem 
@@ -48,62 +50,17 @@ class FilmCollectionContainer extends Component {
         });
     }
 
-    renderComedies = () => {
-        return this.props.films
-            .filter(item => item.categoryId === 2)
-            .map((item, id) => {
-                return (
-                    <div key={id}>
-                        <FilmItem 
-                            {...item}
-                            redirect={this.handleRedirect}
-                        />
-                    </div>
-                )
-            });
-    }
-
-    renderHorrors = () => {
-        return this.props.films
-            .filter(item => item.categoryId === 3)
-            .map((item, id) => {
-                return (
-                    <div key={id}>
-                        <FilmItem 
-                            {...item}
-                            redirect={this.handleRedirect}
-                        />
-                    </div>
-                )
-            });
-    }
-
-    renderFantasy = () => {
-        return this.props.films
-            .filter(item => item.categoryId === 1)
-            .map((item, id) => {
-                return (
-                    <div key={id}>
-                        <FilmItem 
-                            {...item}
-                            redirect={this.handleRedirect}
-                        />
-                    </div>
-                )
-            });
-    }
-
     handleFilterChange = (event) => {
         this.setState({ selectedValue: event.target.value })
     }
 
-    filter = () => {
+    getFilms = () => {
         switch(this.state.selectedValue) {
-            case 'all': return this.renderAllFilms();
-            case 'comedies': return this.renderComedies();
-            case 'horrors': return this.renderHorrors();
-            case 'fantasy': return this.renderFantasy();
-            default: return this.renderAllFilms();
+            case 'all': return this.renderFilms();
+            case 'comedies': return this.renderFilms(2);
+            case 'horrors': return this.renderFilms(3);
+            case 'fantasy': return this.renderFilms(1);
+            default: return this.renderFilms();
         }
     }
 
@@ -120,12 +77,12 @@ class FilmCollectionContainer extends Component {
                 </div>
                 <InfiniteScroll 
                     dataLength={this.props.films.length}
-                    next={this.loadАFilms}
+                    next={this.loadFilms}
                     hasMore={true}
                     style={{ overflow: 'inherit' }}
                 >
                     <div style={styles.filmItemsWrapper}>
-                        {this.filter()}
+                        {this.getFilms()}
                     </div>
                 </InfiniteScroll>
             </div> 

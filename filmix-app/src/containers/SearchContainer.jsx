@@ -20,7 +20,7 @@ class SearchContainer extends Component {
     }
 
     onInputChange = (e) => {
-        this.setState({searchTerms: e.target.value});
+        this.setState({ searchTerms: e.target.value });
         this.filterMovies(e.target.value);
     }
 
@@ -29,7 +29,7 @@ class SearchContainer extends Component {
             return searchTerms && film.title.toLowerCase().startsWith(searchTerms.toLowerCase());
         });
 
-        this.setState({matches: filtered});
+        this.setState({ matches: filtered });
     }
 
     renderMatches = () => {
@@ -43,18 +43,15 @@ class SearchContainer extends Component {
                         {film.title}
                     </div>
                 </div>
-            )
-        })
+            );
+        });
     }
 
     render() {
         return (
             <Search
                 inputChange={this.onInputChange}
-                filterMovies={this.filterMovies}
                 renderMatches={this.renderMatches}
-                searchTerms={this.state.searchTerms}
-                matches={this.state.matches}
             />
         );
     }

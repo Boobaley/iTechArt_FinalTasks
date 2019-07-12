@@ -17,10 +17,10 @@ const Header = (props) => {
             <AppBar position="static" >
                 <Toolbar className={classes.headerWrapper}>
                     <IconButton
-                    edge="start"
-                    className={classes.menuButton}
-                    color="inherit"
-                    aria-label="Open drawer"
+                        edge="start"
+                        className={classes.menuButton}
+                        color="inherit"
+                        aria-label="Open drawer"
                     >
                         <MenuIcon />
                     </IconButton>
@@ -29,7 +29,7 @@ const Header = (props) => {
                         variant="h4" 
                         noWrap
                     >
-                        <a href="/" style={{textDecoration: 'none', color: '#fff'}}>
+                        <a href="/" className={classes.appName}>
                             Film<span className={classes.coloredWord}>MiX</span>  
                         </a>  
                     </Typography>

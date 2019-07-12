@@ -11,4 +11,11 @@ export const useStyles = makeStyles({
         position: "absolute",
         zIndex: 1
     }
-})
+});
+
+export const loaderConfig = {
+    type:"Triangle",
+    color:"#00BFFF",
+    height:"100",
+    width:"100"
+}

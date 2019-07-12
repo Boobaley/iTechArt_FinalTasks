@@ -10,7 +10,6 @@ export const  Search = (props) => {
                 type="text" 
                 className={classes.input}
                 placeholder='Search...'
-                value={props.searchTerms}
                 onChange={props.inputChange}
             />
             <Paper className={classes.shadowDiv}>
